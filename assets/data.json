@@ -1,0 +1,32 @@
+{  
+    "Pujan": {  
+        "messages":       "Hello, How are you?",   
+        "imageURL":      56000,   
+        "time":    "25th Sept"  
+    } ,
+    "Ram": {  
+        "messages":       "When are you coming?",   
+        "imageURL":      56000,   
+        "time":    "28th Sept"  
+    }  ,
+    "Shyam": {  
+        "messages":       "Where are you?",   
+        "imageURL":      56000,   
+        "time":    "25th Oct"  
+    }  ,
+    "Sundar": {  
+        "messages":       "What time is it?",   
+        "imageURL":      56000,   
+        "time":    "25th Jan"  
+    } ,
+     "Hari": {  
+        "messages":       "Hello, How are you?",   
+        "imageURL":      56000,   
+        "time":    "15th Feb"  
+    },
+    "Gita": {  
+        "messages":       "Hello, How are you?",   
+        "imageURL":      56000,   
+        "time":    "25th Sept"  
+    }   
+}  
