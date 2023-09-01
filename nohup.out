@@ -1,0 +1,10 @@
+2023-09-01 16:03:02 Loading main app package /tmp/.mount_ObsiditbDylY/resources/obsidian.asar
+2023-09-01 16:03:05 Checking for update using Github
+2023-09-01 16:03:07 Success.
+2023-09-01 16:03:07 Latest version is 1.4.5
+2023-09-01 16:03:07 Downloading update from https://github.com/obsidianmd/obsidian-releases/releases/download/v1.4.5/obsidian-1.4.5.asar.gz
+2023-09-01 16:03:11 Verifying hash & signature. Size= 8267902
+2023-09-01 16:03:11 Saving file
+2023-09-01 16:03:11 Update complete.
+[6022:0901/215457.873069:ERROR:command_buffer_proxy_impl.cc(325)] GPU state invalid after WaitForGetOffsetInRange.
+[6022:0901/215457.877912:ERROR:gpu_process_host.cc(943)] GPU process exited unexpectedly: exit_code=512
