@@ -1,6 +1,6 @@
-import 'package:whatsapp/model.dart';
+import 'package:whatsapp/model/user_model.dart';
 import 'package:flutter/material.dart';
-import 'package:whatsapp/views/chatpage.dart';
+import 'package:whatsapp/views/chat_view.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
