@@ -20,18 +20,18 @@ class ChatState extends State<HomePage> {
         appBar: AppBar(
             title: const Text('WhatsApp'),
             leadingWidth: 60,
-            backgroundColor: Color(0xFF128c7e),
+            backgroundColor: const Color(0xFF128c7e),
             actions: <Widget>[
               IconButton(
                 icon: const Icon(Icons.camera_alt_outlined),
                 onPressed: () {},
               ),
               IconButton(
-                icon: Icon(Icons.search),
+                icon: const Icon(Icons.search),
                 onPressed: () {},
               ),
               IconButton(
-                icon: Icon(Icons.more_vert),
+                icon: const Icon(Icons.more_vert),
                 onPressed: () {},
               )
             ],
