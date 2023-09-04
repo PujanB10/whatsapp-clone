@@ -60,8 +60,7 @@ class ChatState extends State<HomePage> {
                         ),
                         ListTile(
                           leading: CircleAvatar(
-                            backgroundImage:
-                                NetworkImage(dummy[index].imageURL!),
+                            backgroundImage: AssetImage(dummy[index].imageURL!),
                           ),
                           onTap: () {
                             Navigator.push(
