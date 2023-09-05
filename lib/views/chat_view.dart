@@ -63,16 +63,18 @@ class IndividualChatState extends State<IndividualChats> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            padding: const EdgeInsets.all(10),
-            height: 40,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: Colors.white,
-            ),
-            child: Text(
-              widget.message,
-              style: const TextStyle(fontSize: 17),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(10, 8, 100, 8),
+            child: Container(
+              padding: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.white,
+              ),
+              child: Text(
+                widget.message,
+                style: const TextStyle(fontSize: 17),
+              ),
             ),
           ),
           Expanded(
@@ -80,13 +82,12 @@ class IndividualChatState extends State<IndividualChats> {
                 itemCount: dummyChat.length,
                 itemBuilder: ((BuildContext context, int index) => Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
-                      mainAxisSize: MainAxisSize.min,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.fromLTRB(250, 8, 10, 8),
+                          padding: const EdgeInsets.fromLTRB(100, 8, 10, 8),
                           child: Container(
                             padding: const EdgeInsets.all(10),
-                            height: 40,
+                            // height: 40,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               color: const Color.fromARGB(255, 185, 243, 187),
