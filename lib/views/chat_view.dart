@@ -60,40 +60,48 @@ class IndividualChatState extends State<IndividualChats> {
           IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert))
         ],
       ),
-      body: ListView.builder(
-          itemCount: dummyChat.length,
-          itemBuilder: ((BuildContext context, int index) => Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(10, 10, 100, 10),
-                    child: Container(
-                      padding: const EdgeInsets.all(10),
-                      height: 40,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.white,
-                      ),
-                      child: Text(
-                        widget.message,
-                        style: const TextStyle(fontSize: 17),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    alignment: Alignment.topRight,
-                    padding: const EdgeInsets.all(10),
-                    height: 40,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: const Color.fromARGB(255, 185, 243, 187),
-                    ),
-                    child: Text(
-                      dummyChat[index].userMessages!,
-                      style: const TextStyle(fontSize: 17),
-                    ),
-                  ),
-                ],
-              ))),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            padding: const EdgeInsets.all(10),
+            height: 40,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: Colors.white,
+            ),
+            child: Text(
+              widget.message,
+              style: const TextStyle(fontSize: 17),
+            ),
+          ),
+          Expanded(
+            child: ListView.builder(
+                itemCount: dummyChat.length,
+                itemBuilder: ((BuildContext context, int index) => Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(250, 8, 10, 8),
+                          child: Container(
+                            padding: const EdgeInsets.all(10),
+                            height: 40,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: const Color.fromARGB(255, 185, 243, 187),
+                            ),
+                            child: Text(
+                              dummyChat[index].userMessages!,
+                              style: const TextStyle(fontSize: 17),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ))),
+          )
+        ],
+      ),
       bottomNavigationBar: Padding(
         padding: MediaQuery.of(context).viewInsets,
         child: SizedBox(
