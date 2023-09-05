@@ -20,7 +20,7 @@ class IndividualChatState extends State<IndividualChats> {
 
   void sendMessage() {
     setState(() {
-      addMessages(textMessage);
+      addMessages(textMessage, widget.usrName);
       textController.clear();
     });
   }
@@ -78,28 +78,32 @@ class IndividualChatState extends State<IndividualChats> {
             ),
           ),
           Expanded(
-            child: ListView.builder(
-                itemCount: dummyChat.length,
-                itemBuilder: ((BuildContext context, int index) => Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(100, 8, 10, 8),
-                          child: Container(
-                            padding: const EdgeInsets.all(10),
-                            // height: 40,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: const Color.fromARGB(255, 185, 243, 187),
+            child: dummyChat.containsKey(widget.usrName)
+                ? ListView.builder(
+                    addAutomaticKeepAlives: false,
+                    itemCount: dummyChat[widget.usrName]?.length,
+                    itemBuilder: ((BuildContext context, int index) => Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(100, 8, 10, 8),
+                              child: Container(
+                                padding: const EdgeInsets.all(10),
+                                // height: 40,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color:
+                                      const Color.fromARGB(255, 185, 243, 187),
+                                ),
+                                child: Text(
+                                  dummyChat[widget.usrName]?[index],
+                                  style: const TextStyle(fontSize: 17),
+                                ),
+                              ),
                             ),
-                            child: Text(
-                              dummyChat[index].userMessages!,
-                              style: const TextStyle(fontSize: 17),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ))),
+                          ],
+                        )))
+                : Container(),
           )
         ],
       ),

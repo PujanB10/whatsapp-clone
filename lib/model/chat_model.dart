@@ -1,6 +1,8 @@
+import 'dart:convert';
+
 class ChatMessages {
-  String? userMessages;
-  ChatMessages({this.userMessages});
+  String? userName;
+  ChatMessages({this.userName});
 }
 
-List<ChatMessages> dummyChat = [];
+Map<String, List> dummyChat = {};
