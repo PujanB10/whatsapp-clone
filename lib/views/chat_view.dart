@@ -16,11 +16,12 @@ class IndividualChatState extends State<IndividualChats> {
   late String textMessage;
   String message = "";
   int numberOfMessages = 0;
+  bool isUser = false;
   var dynamicBottomBarIcon = const Icon(Icons.mic);
 
   void sendMessage() {
     setState(() {
-      addMessages(textMessage, widget.usrName);
+      addMessages(widget.usrName, textMessage, isUser = true);
       textController.clear();
     });
   }
@@ -42,71 +43,10 @@ class IndividualChatState extends State<IndividualChats> {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       backgroundColor: Colors.blueGrey.shade100,
-      appBar: AppBar(
-        title: Row(
-          children: <Widget>[
-            CircleAvatar(backgroundImage: AssetImage(widget.imgUrl)),
-            const Padding(
-              padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-            ),
-            Text(widget.usrName)
-          ],
-        ),
-        backgroundColor: const Color(0xFF128c7e),
-        actions: <Widget>[
-          IconButton(
-              onPressed: () {}, icon: const Icon(Icons.video_call_sharp)),
-          IconButton(onPressed: () {}, icon: const Icon(Icons.call)),
-          IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert))
-        ],
-      ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(10, 8, 100, 8),
-            child: Container(
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Colors.white,
-              ),
-              child: Text(
-                widget.message,
-                style: const TextStyle(fontSize: 17),
-              ),
-            ),
-          ),
-          Expanded(
-            child: dummyChat.containsKey(widget.usrName)
-                ? ListView.builder(
-                    addAutomaticKeepAlives: false,
-                    itemCount: dummyChat[widget.usrName]?.length,
-                    itemBuilder: ((BuildContext context, int index) => Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(100, 8, 10, 8),
-                              child: Container(
-                                padding: const EdgeInsets.all(10),
-                                // height: 40,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  color:
-                                      const Color.fromARGB(255, 185, 243, 187),
-                                ),
-                                child: Text(
-                                  dummyChat[widget.usrName]?[index],
-                                  style: const TextStyle(fontSize: 17),
-                                ),
-                              ),
-                            ),
-                          ],
-                        )))
-                : Container(),
-          )
-        ],
-      ),
+      appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(55),
+          child: AppBarWidget(widget: widget)),
+      body: BodyColumnWidget(widget: widget),
       bottomNavigationBar: Padding(
         padding: MediaQuery.of(context).viewInsets,
         child: SizedBox(
@@ -163,6 +103,96 @@ class IndividualChatState extends State<IndividualChats> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class BodyColumnWidget extends StatelessWidget {
+  const BodyColumnWidget({
+    super.key,
+    required this.widget,
+  });
+
+  final IndividualChats widget;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.fromLTRB(10, 8, 100, 8),
+          child: Container(
+            padding: const EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: Colors.white,
+            ),
+            child: Text(
+              widget.message,
+              style: const TextStyle(fontSize: 17),
+            ),
+          ),
+        ),
+        Expanded(
+            child: dummyChat.containsKey(widget.usrName)
+                ? ListView.builder(
+                    addAutomaticKeepAlives: false,
+                    itemCount: dummyChat[widget.usrName]["userMessages"].length,
+                    itemBuilder: ((BuildContext context, int index) => Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(100, 8, 10, 8),
+                              child: Container(
+                                padding: const EdgeInsets.all(10),
+                                // height: 40,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color:
+                                      const Color.fromARGB(255, 185, 243, 187),
+                                ),
+                                child: Text(
+                                  dummyChat[widget.usrName]!["userMessages"]
+                                      [index],
+                                  style: const TextStyle(fontSize: 17),
+                                ),
+                              ),
+                            ),
+                          ],
+                        )))
+                : Container())
+      ],
+    );
+  }
+}
+
+class AppBarWidget extends StatelessWidget {
+  const AppBarWidget({
+    super.key,
+    required this.widget,
+  });
+
+  final IndividualChats widget;
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      title: Row(
+        children: <Widget>[
+          CircleAvatar(backgroundImage: AssetImage(widget.imgUrl)),
+          const Padding(
+            padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+          ),
+          Text(widget.usrName)
+        ],
+      ),
+      backgroundColor: const Color(0xFF128c7e),
+      actions: <Widget>[
+        IconButton(onPressed: () {}, icon: const Icon(Icons.video_call_sharp)),
+        IconButton(onPressed: () {}, icon: const Icon(Icons.call)),
+        IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert))
+      ],
     );
   }
 }

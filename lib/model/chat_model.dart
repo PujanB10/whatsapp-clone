@@ -1,8 +1,17 @@
-import 'dart:convert';
-
 class ChatMessages {
   String? userName;
-  ChatMessages({this.userName});
+  String? messages;
+  bool? isUser;
+  ChatMessages({this.userName, this.messages, this.isUser});
+
+  Map<String?, dynamic> toMap() {
+    return {
+      userName: {
+        "userMessages": [messages],
+        "isUser": isUser
+      }
+    };
+  }
 }
 
-Map<String, List> dummyChat = {};
+Map<String?, dynamic> dummyChat = {};
