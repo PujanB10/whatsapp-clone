@@ -10,7 +10,7 @@ class ChatViewModel {
         messages: messageFromView,
         isUser: isUserFromView);
     if (dummyChat.containsKey(userNameFromView)) {
-      Map<String, dynamic> chatMap = chat.toMapExisting();
+      // Map<String, dynamic> chatMap = chat.toMapExisting();
       dummyChat[userNameFromView]!
           .add({"message": messageFromView, "isUser": isUserFromView});
     } else {

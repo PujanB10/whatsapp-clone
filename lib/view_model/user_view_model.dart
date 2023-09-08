@@ -1,12 +1,12 @@
-import 'package:whatsapp/model/chat_model.dart';
+import 'package:whatsapp/model/user_model.dart';
 
 class UserViewModel {
-  Map<String, String> giveInfo(int index) {
+  Map<String, String> userInfo(int index) {
     return {
-      "userName": dummyChat[index].userName,
-      "imgURL": dummyChat[index].imageURL,
-      "userMessage": dummyChat[index].messages,
-      "time": dummyChat[index].time
+      "userName": dummy[index].userName!,
+      "userMessages": dummy[index].messages!,
+      "imageURL": dummy[index].imageURL!,
+      "time": dummy[index].time!
     };
   }
 }

@@ -1,6 +1,7 @@
 import 'package:whatsapp/model/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:whatsapp/style/app_color.dart';
+import 'package:whatsapp/view_model/user_view_model.dart';
 import 'package:whatsapp/views/chat_view.dart';
 
 class HomePage extends StatefulWidget {
@@ -61,23 +62,27 @@ class ChatState extends State<HomePage> {
                         ),
                         ListTile(
                           leading: CircleAvatar(
-                            backgroundImage: AssetImage(dummy[index].imageURL!),
+                            backgroundImage: AssetImage(
+                                UserViewModel().userInfo(index)["imageURL"]!),
                           ),
                           onTap: () {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => IndividualChats(
-                                        dummy[index].userName!,
-                                        dummy[index].imageURL!,
-                                        dummy[index].messages!)));
+                                        UserViewModel()
+                                            .userInfo(index)["userName"]!,
+                                        UserViewModel()
+                                            .userInfo(index)["imageURL"]!,
+                                        UserViewModel().userInfo(
+                                            index)["userMessages"]!)));
                           },
                           title: Row(
                             children: <Widget>[
                               const Padding(
                                   padding: EdgeInsets.fromLTRB(0, 2, 2, 30)),
                               Text(
-                                dummy[index].userName!,
+                                UserViewModel().userInfo(index)["userName"]!,
                                 style: const TextStyle(
                                     fontWeight: FontWeight.bold),
                               )
@@ -87,10 +92,11 @@ class ChatState extends State<HomePage> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
                                 Text(
-                                  dummy[index].messages!,
+                                  UserViewModel()
+                                      .userInfo(index)["userMessages"]!,
                                   style: const TextStyle(color: Colors.grey),
                                 ),
-                                Text(dummy[index].time!)
+                                Text(UserViewModel().userInfo(index)["time"]!)
                               ]),
                         )
                       ],

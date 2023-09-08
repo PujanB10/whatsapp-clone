@@ -4,7 +4,6 @@ import 'package:whatsapp/views/uitools/chatbox.dart';
 import 'package:whatsapp/view_model/chat_view_model.dart';
 import 'package:whatsapp/style/app_color.dart';
 import 'package:whatsapp/style/app_font_sizes.dart';
-import 'package:whatsapp/style/app_text_style.dart';
 
 class IndividualChats extends StatefulWidget {
   final String usrName;
