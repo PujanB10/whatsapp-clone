@@ -1,5 +1,6 @@
 import 'package:whatsapp/model/user_model.dart';
 import 'package:flutter/material.dart';
+import 'package:whatsapp/style/app_color.dart';
 import 'package:whatsapp/views/chat_view.dart';
 
 class HomePage extends StatefulWidget {
@@ -100,7 +101,7 @@ class ChatState extends State<HomePage> {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {},
-          backgroundColor: const Color(0xFF128c7e),
+          backgroundColor: AppColor.primary,
           child: const Icon(Icons.message_sharp),
         ),
       ),

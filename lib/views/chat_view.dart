@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp/model/chat_model.dart';
-import 'package:whatsapp/uitools/chatbox.dart';
+import 'package:whatsapp/views/uitools/chatbox.dart';
 import 'package:whatsapp/view_model/chat_view_model.dart';
+import 'package:whatsapp/style/app_color.dart';
+import 'package:whatsapp/style/app_font_sizes.dart';
+import 'package:whatsapp/style/app_text_style.dart';
 
 class IndividualChats extends StatefulWidget {
   final String usrName;
@@ -19,7 +22,6 @@ class IndividualChatState extends State<IndividualChats> {
   int numberOfMessages = 0;
   bool isUser = false;
   var dynamicBottomBarIcon = const Icon(Icons.mic);
-
   void sendMessage() {
     setState(() {
       ChatViewModel().addMessages(widget.usrName, textMessage, isUser = true);
@@ -47,7 +49,7 @@ class IndividualChatState extends State<IndividualChats> {
       appBar: PreferredSize(
           preferredSize: const Size.fromHeight(55),
           child: AppBarWidget(widget: widget)),
-      body: BodyColumnWidget(widget: widget),
+      body: ItemViewWidget(widget: widget),
       bottomNavigationBar: Padding(
         padding: MediaQuery.of(context).viewInsets,
         child: SizedBox(
@@ -57,45 +59,38 @@ class IndividualChatState extends State<IndividualChats> {
             children: [
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(7, 0, 4, 8),
-                  child: TextField(
-                    controller: textController,
-                    onChanged: (value) {
-                      textMessage = value;
-                      setIcon();
-                    },
-                    // onTapOutside: resetIcon(),
-                    textAlignVertical: TextAlignVertical.bottom,
-                    decoration: InputDecoration(
-                        hintText: "Message",
-                        hintStyle: const TextStyle(fontSize: 17),
-                        fillColor: Colors.white,
-                        filled: true,
-                        enabledBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(color: Colors.white),
-                            borderRadius: BorderRadius.circular(20)),
-                        prefixIcon: const Icon(Icons.emoji_emotions),
-                        suffixIcon: const Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.fromLTRB(0, 8, 0, 8),
-                              child: Icon(Icons.attachment),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.fromLTRB(12, 8, 8, 8),
-                              child: Icon(Icons.camera_alt),
-                            ),
-                          ],
-                        )),
-                  ),
-                ),
+                    padding: const EdgeInsets.fromLTRB(7, 0, 4, 8),
+                    child: TextField(
+                        controller: textController,
+                        onChanged: (value) {
+                          textMessage = value;
+                          setIcon();
+                        },
+                        // onTapOutside: resetIcon(),
+                        textAlignVertical: TextAlignVertical.bottom,
+                        decoration: InputDecoration(
+                          hintText: "Message",
+                          hintStyle:
+                              const TextStyle(fontSize: AppFontSizes.medium),
+                          fillColor: Colors.white,
+                          filled: true,
+                          enabledBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(20)),
+                          prefixIcon: const Icon(Icons.emoji_emotions),
+                          suffixIcon: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                iconInTextField(const Icon(Icons.attachment)),
+                                iconInTextField(const Icon(Icons.camera_alt))
+                              ]),
+                        ))),
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(1, 0, 4, 5),
                 child: FloatingActionButton(
-                  backgroundColor: const Color(0xFF128c7e),
+                  backgroundColor: AppColor.primary,
                   onPressed: sendMessage,
                   child: dynamicBottomBarIcon,
                 ),
@@ -106,10 +101,17 @@ class IndividualChatState extends State<IndividualChats> {
       ),
     );
   }
+
+  Padding iconInTextField(Icon iconName) {
+    return Padding(
+      padding: const EdgeInsets.all(8),
+      child: iconName,
+    );
+  }
 }
 
-class BodyColumnWidget extends StatelessWidget {
-  const BodyColumnWidget({
+class ItemViewWidget extends StatelessWidget {
+  const ItemViewWidget({
     super.key,
     required this.widget,
   });
@@ -122,6 +124,7 @@ class BodyColumnWidget extends StatelessWidget {
         addAutomaticKeepAlives: false,
         itemCount: dummyChat[widget.usrName].length,
         itemBuilder: ((BuildContext context, int index) => Column(
+              //aligning left if received message and right if sent message
               crossAxisAlignment: (dummyChat[widget.usrName][index]!["isUser"])
                   ? CrossAxisAlignment.end
                   : CrossAxisAlignment.start,
@@ -154,7 +157,7 @@ class AppBarWidget extends StatelessWidget {
           Text(widget.usrName)
         ],
       ),
-      backgroundColor: const Color(0xFF128c7e),
+      backgroundColor: AppColor.primary,
       actions: <Widget>[
         IconButton(onPressed: () {}, icon: const Icon(Icons.video_call_sharp)),
         IconButton(onPressed: () {}, icon: const Icon(Icons.call)),
