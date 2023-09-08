@@ -120,15 +120,15 @@ class BodyColumnWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
         addAutomaticKeepAlives: false,
-        itemCount: dummyChat[widget.usrName]["userMessages"].length,
+        itemCount: dummyChat[widget.usrName].length,
         itemBuilder: ((BuildContext context, int index) => Column(
-              crossAxisAlignment: (dummyChat[widget.usrName]!["isUser"])
+              crossAxisAlignment: (dummyChat[widget.usrName][index]!["isUser"])
                   ? CrossAxisAlignment.end
                   : CrossAxisAlignment.start,
               children: [
                 ChatBox(
-                    message: dummyChat[widget.usrName]!["userMessages"][index],
-                    isUser: dummyChat[widget.usrName]!["isUser"])
+                    message: dummyChat[widget.usrName]![index]["message"],
+                    isUser: dummyChat[widget.usrName]![index]["isUser"])
               ],
             )));
   }

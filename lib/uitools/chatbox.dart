@@ -21,7 +21,7 @@ class ChatBox extends StatelessWidget {
               : const Color.fromARGB(255, 253, 253, 253),
         ),
         child: Text(
-          "$message $isUser",
+          message,
           style: const TextStyle(fontSize: 17),
         ),
       ),

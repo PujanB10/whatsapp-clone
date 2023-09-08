@@ -3,16 +3,19 @@ import 'package:whatsapp/model/chat_model.dart';
 class ChatViewModel {
   void addMessages(
       String userNameFromView, String messageFromView, bool isUserFromView) {
+    ChatMessages chat = ChatMessages(
+        userName: userNameFromView,
+        messages: messageFromView,
+        isUser: isUserFromView);
     if (dummyChat.containsKey(userNameFromView)) {
-      dummyChat[userNameFromView]!["userMessages"].add(messageFromView);
-      dummyChat[userNameFromView]!["isUser"] = isUserFromView;
+      Map<String, dynamic> chatMap = chat.toMapExisting();
+      dummyChat[userNameFromView]!
+          .add({"message": messageFromView, "isUser": isUserFromView});
     } else {
-      ChatMessages chat = ChatMessages(
-          userName: userNameFromView,
-          messages: messageFromView,
-          isUser: isUserFromView);
-      Map<String?, dynamic> chatMap = chat.toMap();
-      dummyChat.addEntries(chatMap.entries);
+      {
+        Map<String, dynamic> chatMap = chat.toMapNew();
+        dummyChat.addEntries(chatMap.entries);
+      }
     }
   }
 }
