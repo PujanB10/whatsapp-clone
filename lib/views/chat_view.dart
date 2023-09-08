@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp/model/chat_model.dart';
+import 'package:whatsapp/uitools/chatbox.dart';
 import 'package:whatsapp/view_model/chat_view_model.dart';
 
 class IndividualChats extends StatefulWidget {
@@ -21,7 +22,7 @@ class IndividualChatState extends State<IndividualChats> {
 
   void sendMessage() {
     setState(() {
-      addMessages(widget.usrName, textMessage, isUser = true);
+      ChatViewModel().addMessages(widget.usrName, textMessage, isUser = true);
       textController.clear();
     });
   }
@@ -117,53 +118,19 @@ class BodyColumnWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const EdgeInsets.fromLTRB(10, 8, 100, 8),
-          child: Container(
-            padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: Colors.white,
-            ),
-            child: Text(
-              widget.message,
-              style: const TextStyle(fontSize: 17),
-            ),
-          ),
-        ),
-        Expanded(
-            child: dummyChat.containsKey(widget.usrName)
-                ? ListView.builder(
-                    addAutomaticKeepAlives: false,
-                    itemCount: dummyChat[widget.usrName]["userMessages"].length,
-                    itemBuilder: ((BuildContext context, int index) => Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(100, 8, 10, 8),
-                              child: Container(
-                                padding: const EdgeInsets.all(10),
-                                // height: 40,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  color:
-                                      const Color.fromARGB(255, 185, 243, 187),
-                                ),
-                                child: Text(
-                                  dummyChat[widget.usrName]!["userMessages"]
-                                      [index],
-                                  style: const TextStyle(fontSize: 17),
-                                ),
-                              ),
-                            ),
-                          ],
-                        )))
-                : Container())
-      ],
-    );
+    return ListView.builder(
+        addAutomaticKeepAlives: false,
+        itemCount: dummyChat[widget.usrName]["userMessages"].length,
+        itemBuilder: ((BuildContext context, int index) => Column(
+              crossAxisAlignment: (dummyChat[widget.usrName]!["isUser"])
+                  ? CrossAxisAlignment.end
+                  : CrossAxisAlignment.start,
+              children: [
+                ChatBox(
+                    message: dummyChat[widget.usrName]!["userMessages"][index],
+                    isUser: dummyChat[widget.usrName]!["isUser"])
+              ],
+            )));
   }
 }
 
