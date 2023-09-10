@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '/style/app_font_sizes.dart';
+import '/styles/app_font_sizes.dart';
 
 class AppTextStyle {
   static TextStyle hintStyle(BuildContext context, Color color) {

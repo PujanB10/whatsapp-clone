@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
+/// Custom chat boxes for chat features
 class ChatBox extends StatelessWidget {
+  /// Takes in <String?> message and <Bool?> to authenticate if its sender
+  /// or receiver and creates a chat box accordidng to the arguments
+  /// provided.
   const ChatBox({super.key, required this.message, required this.isUser});
   final String message;
   final bool isUser;
@@ -17,7 +21,7 @@ class ChatBox extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           color: isUser
-              ? const Color.fromARGB(255, 185, 243, 187)
+              ? Theme.of(context).primaryColorLight
               : const Color.fromARGB(255, 253, 253, 253),
         ),
         child: Text(

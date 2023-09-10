@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp/model/chat_model.dart';
-import 'package:whatsapp/views/uitools/chat_box.dart';
-import 'package:whatsapp/view_model/chat_view_model.dart';
-import 'package:whatsapp/style/app_font_sizes.dart';
-import 'package:whatsapp/views/uitools/app_bar_widget.dart';
+import 'package:whatsapp/views/widgets/chat_box.dart';
+import 'package:whatsapp/views/chat_page/chat_view_model.dart';
+import 'package:whatsapp/styles/app_font_sizes.dart';
+import 'package:whatsapp/views/widgets/app_bar_widget.dart';
 
 /// Private chat page of the app.
 class ChatPage extends StatefulWidget {
