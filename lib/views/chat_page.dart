@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp/model/chat_model.dart';
-import 'package:whatsapp/views/uitools/chatbox.dart';
+import 'package:whatsapp/views/uitools/chat_box.dart';
 import 'package:whatsapp/view_model/chat_view_model.dart';
-import 'package:whatsapp/style/app_color.dart';
 import 'package:whatsapp/style/app_font_sizes.dart';
 import 'package:whatsapp/views/uitools/app_bar_widget.dart';
 
+/// Private chat page of the app.
 class ChatPage extends StatefulWidget {
   final String usrName;
   final String imgUrl;
   final String message;
+
+  /// Private chat page that opens after having clicked
+  /// a particular user from the home page.
   const ChatPage(this.usrName, this.imgUrl, this.message, {super.key});
   @override
   State<StatefulWidget> createState() => ChatPageBody();
@@ -22,6 +25,8 @@ class ChatPageBody extends State<ChatPage> {
   int numberOfMessages = 0;
   bool isUser = false;
   var dynamicBottomBarIcon = const Icon(Icons.mic);
+
+  /// Adds the message to the model so as to extract later.
   void sendMessage() {
     setState(() {
       ChatViewModel().addMessages(widget.usrName, textMessage, isUser = true);
@@ -29,12 +34,15 @@ class ChatPageBody extends State<ChatPage> {
     });
   }
 
+  /// Transforms the icon from mic to send on typing something in
+  /// message field.
   void setIcon() {
     setState(() {
       dynamicBottomBarIcon = const Icon(Icons.send);
     });
   }
 
+  /// Resets the icon back to mic after having sent the message.
   void resetIcon() {
     setState(() {
       dynamicBottomBarIcon = const Icon(Icons.mic);
@@ -46,13 +54,17 @@ class ChatPageBody extends State<ChatPage> {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       backgroundColor: Colors.blueGrey.shade100,
+
+      /// Calls the custom AppBar widget.
       appBar: PreferredSize(
           preferredSize: const Size.fromHeight(55),
           child: AppBarWidget(
             username: widget.usrName,
             imageUrl: widget.imgUrl,
-            bgColor: AppColor.primary,
+            bgColor: Theme.of(context).primaryColor,
           )),
+
+      /// Calls the chat message builder.
       body: MessagesViewWidget(widget: widget),
       bottomNavigationBar: Padding(
         padding: MediaQuery.of(context).viewInsets,
@@ -69,7 +81,6 @@ class ChatPageBody extends State<ChatPage> {
                           textMessage = value;
                           setIcon();
                         },
-                        // onTapOutside: resetIcon(),
                         textAlignVertical: TextAlignVertical.bottom,
                         decoration: InputDecoration(
                           hintText: "Message",
@@ -80,6 +91,9 @@ class ChatPageBody extends State<ChatPage> {
                           enabledBorder: OutlineInputBorder(
                               borderSide: const BorderSide(color: Colors.white),
                               borderRadius: BorderRadius.circular(20)),
+
+                          /// Adds a prefix icon in front of the message text
+                          /// field.
                           prefixIcon: const Icon(Icons.emoji_emotions),
                           suffixIcon: Row(
                               mainAxisAlignment: MainAxisAlignment.end,
@@ -92,10 +106,13 @@ class ChatPageBody extends State<ChatPage> {
                               ]),
                         ))),
               ),
+
+              /// Send or Record button that resides in the bottom navigation
+              /// bar alongside message text field.
               Padding(
                 padding: const EdgeInsets.fromLTRB(1, 0, 4, 5),
                 child: FloatingActionButton(
-                  backgroundColor: AppColor.primary,
+                  backgroundColor: Theme.of(context).primaryColor,
                   onPressed: sendMessage,
                   child: dynamicBottomBarIcon,
                 ),
@@ -107,6 +124,7 @@ class ChatPageBody extends State<ChatPage> {
     );
   }
 
+  /// Builds the icons in the suffix of the message text field.
   Widget buildIconsInMessageField(Icon iconName) {
     return Padding(
       padding: const EdgeInsets.all(8),
@@ -115,6 +133,7 @@ class ChatPageBody extends State<ChatPage> {
   }
 }
 
+/// Builds the list of chat messages that comes in from the model.
 class MessagesViewWidget extends StatelessWidget {
   const MessagesViewWidget({
     super.key,
