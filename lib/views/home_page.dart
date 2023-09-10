@@ -4,7 +4,9 @@ import 'package:whatsapp/style/app_color.dart';
 import 'package:whatsapp/view_model/user_view_model.dart';
 import 'package:whatsapp/views/chat_page.dart';
 
+/// Home Page of the app.
 class HomePage extends StatefulWidget {
+  /// Home Page routed by MaterialApp that is displayed on opening the app.
   const HomePage({super.key});
 
   @override
@@ -21,8 +23,8 @@ class ChatState extends State<HomePage> {
       child: Scaffold(
         appBar: AppBar(
             title: const Text('WhatsApp'),
+            backgroundColor: Theme.of(context).primaryColor,
             leadingWidth: 60,
-            backgroundColor: const Color(0xFF128c7e),
             actions: <Widget>[
               IconButton(
                 icon: const Icon(Icons.camera_alt_outlined),
@@ -49,6 +51,9 @@ class ChatState extends State<HomePage> {
                 text: 'Calls',
               ),
             ])),
+
+        /// Builds the list of users with their pictures as leading
+        /// image, their last text and time.
         body: TabBarView(
           children: [
             const Icon(Icons.groups_sharp),
@@ -65,6 +70,9 @@ class ChatState extends State<HomePage> {
                             backgroundImage: AssetImage(
                                 UserViewModel().userInfo(index)["imageURL"]!),
                           ),
+
+                          /// On tapping a user from the list, opens the private
+                          /// chat with the user.
                           onTap: () {
                             Navigator.push(
                                 context,
@@ -105,6 +113,9 @@ class ChatState extends State<HomePage> {
             const Icon(Icons.groups_sharp)
           ],
         ),
+
+        /// Floating button that resides on the bottom right to create
+        /// a new message.
         floatingActionButton: FloatingActionButton(
           onPressed: () {},
           backgroundColor: AppColor.primary,
