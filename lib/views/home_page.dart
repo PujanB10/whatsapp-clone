@@ -2,7 +2,7 @@ import 'package:whatsapp/model/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:whatsapp/style/app_color.dart';
 import 'package:whatsapp/view_model/user_view_model.dart';
-import 'package:whatsapp/views/chat_view.dart';
+import 'package:whatsapp/views/chat_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -69,7 +69,7 @@ class ChatState extends State<HomePage> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => IndividualChats(
+                                    builder: (context) => ChatPage(
                                         UserViewModel()
                                             .userInfo(index)["userName"]!,
                                         UserViewModel()
