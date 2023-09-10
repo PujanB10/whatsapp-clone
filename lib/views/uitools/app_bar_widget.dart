@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 
+/// Custom AppBar widget for chatpages.
+
 class AppBarWidget extends StatelessWidget {
+  /// Takes username, URL of the image of the user
+  /// and background color of the app bar and creates an AppBar with
+  /// video-call and audio-call icons integrated.
   const AppBarWidget(
       {super.key,
       required this.username,
