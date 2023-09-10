@@ -4,12 +4,13 @@ import 'package:whatsapp/views/uitools/chatbox.dart';
 import 'package:whatsapp/view_model/chat_view_model.dart';
 import 'package:whatsapp/style/app_color.dart';
 import 'package:whatsapp/style/app_font_sizes.dart';
+import 'package:whatsapp/views/uitools/app_bar_widget.dart';
 
 class IndividualChats extends StatefulWidget {
   final String usrName;
   final String imgUrl;
   final String message;
-  IndividualChats(this.usrName, this.imgUrl, this.message);
+  const IndividualChats(this.usrName, this.imgUrl, this.message, {super.key});
   @override
   State<StatefulWidget> createState() => IndividualChatState();
 }
@@ -47,44 +48,22 @@ class IndividualChatState extends State<IndividualChats> {
       backgroundColor: Colors.blueGrey.shade100,
       appBar: PreferredSize(
           preferredSize: const Size.fromHeight(55),
-          child: AppBarWidget(widget: widget)),
-      body: ItemViewWidget(widget: widget),
+          child: AppBarWidget(
+            username: widget.usrName,
+            imageUrl: widget.imgUrl,
+            bgColor: AppColor.primary,
+          )),
+      body: MessagesViewWidget(widget: widget),
       bottomNavigationBar: Padding(
         padding: MediaQuery.of(context).viewInsets,
         child: SizedBox(
           height: 50,
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Expanded(
                 child: Padding(
                     padding: const EdgeInsets.fromLTRB(7, 0, 4, 8),
-                    child: TextField(
-                        controller: textController,
-                        onChanged: (value) {
-                          textMessage = value;
-                          setIcon();
-                        },
-                        // onTapOutside: resetIcon(),
-                        textAlignVertical: TextAlignVertical.bottom,
-                        decoration: InputDecoration(
-                          hintText: "Message",
-                          hintStyle:
-                              const TextStyle(fontSize: AppFontSizes.medium),
-                          fillColor: Colors.white,
-                          filled: true,
-                          enabledBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(color: Colors.white),
-                              borderRadius: BorderRadius.circular(20)),
-                          prefixIcon: const Icon(Icons.emoji_emotions),
-                          suffixIcon: Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                iconInTextField(const Icon(Icons.attachment)),
-                                iconInTextField(const Icon(Icons.camera_alt))
-                              ]),
-                        ))),
+                    child: buildMessageInputField()),
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(1, 0, 4, 5),
@@ -101,7 +80,35 @@ class IndividualChatState extends State<IndividualChats> {
     );
   }
 
-  Padding iconInTextField(Icon iconName) {
+  Widget buildMessageInputField() {
+    return TextField(
+        controller: textController,
+        onChanged: (value) {
+          textMessage = value;
+          setIcon();
+        },
+        // onTapOutside: resetIcon(),
+        textAlignVertical: TextAlignVertical.bottom,
+        decoration: InputDecoration(
+          hintText: "Message",
+          hintStyle: const TextStyle(fontSize: AppFontSizes.medium),
+          fillColor: Colors.white,
+          filled: true,
+          enabledBorder: OutlineInputBorder(
+              borderSide: const BorderSide(color: Colors.white),
+              borderRadius: BorderRadius.circular(20)),
+          prefixIcon: const Icon(Icons.emoji_emotions),
+          suffixIcon: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                buildIconsInMessageField(const Icon(Icons.attachment)),
+                buildIconsInMessageField(const Icon(Icons.camera_alt))
+              ]),
+        ));
+  }
+
+  Widget buildIconsInMessageField(Icon iconName) {
     return Padding(
       padding: const EdgeInsets.all(8),
       child: iconName,
@@ -109,8 +116,8 @@ class IndividualChatState extends State<IndividualChats> {
   }
 }
 
-class ItemViewWidget extends StatelessWidget {
-  const ItemViewWidget({
+class MessagesViewWidget extends StatelessWidget {
+  const MessagesViewWidget({
     super.key,
     required this.widget,
   });
@@ -133,35 +140,5 @@ class ItemViewWidget extends StatelessWidget {
                     isUser: dummyChat[widget.usrName]![index]["isUser"])
               ],
             )));
-  }
-}
-
-class AppBarWidget extends StatelessWidget {
-  const AppBarWidget({
-    super.key,
-    required this.widget,
-  });
-
-  final IndividualChats widget;
-
-  @override
-  Widget build(BuildContext context) {
-    return AppBar(
-      title: Row(
-        children: <Widget>[
-          CircleAvatar(backgroundImage: AssetImage(widget.imgUrl)),
-          const Padding(
-            padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-          ),
-          Text(widget.usrName)
-        ],
-      ),
-      backgroundColor: AppColor.primary,
-      actions: <Widget>[
-        IconButton(onPressed: () {}, icon: const Icon(Icons.video_call_sharp)),
-        IconButton(onPressed: () {}, icon: const Icon(Icons.call)),
-        IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert))
-      ],
-    );
   }
 }
