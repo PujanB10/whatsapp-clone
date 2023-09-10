@@ -61,7 +61,6 @@ class ChatPageBody extends State<ChatPage> {
           child: AppBarWidget(
             username: widget.usrName,
             imageUrl: widget.imgUrl,
-            bgColor: Theme.of(context).primaryColor,
           )),
 
       /// Calls the chat message builder.
@@ -112,7 +111,6 @@ class ChatPageBody extends State<ChatPage> {
               Padding(
                 padding: const EdgeInsets.fromLTRB(1, 0, 4, 5),
                 child: FloatingActionButton(
-                  backgroundColor: Theme.of(context).primaryColor,
                   onPressed: sendMessage,
                   child: dynamicBottomBarIcon,
                 ),
