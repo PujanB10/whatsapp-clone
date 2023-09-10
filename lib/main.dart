@@ -17,8 +17,10 @@ class MainApp extends StatelessWidget {
 
       /// Setting the theme of the app.
       theme: ThemeData(
-        primaryColor: AppColor.primary,
-      ),
+          primaryColor: AppColor.primary,
+          appBarTheme: const AppBarTheme(color: AppColor.primary),
+          floatingActionButtonTheme: const FloatingActionButtonThemeData(
+              backgroundColor: AppColor.primary)),
       home: const HomePage(),
     );
   }
