@@ -10,6 +10,6 @@ class AppTextStyle {
 
   static TextStyle textMessageStyle(BuildContext context, Color color) {
     return GoogleFonts.alef(
-        fontSize: AppFontSizes.large, textStyle: TextStyle(color: color));
+        fontSize: AppFontSizes.smallMedium, textStyle: TextStyle(color: color));
   }
 }
