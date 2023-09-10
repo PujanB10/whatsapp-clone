@@ -21,7 +21,7 @@ class ChatBox extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           color: isUser
-              ? Theme.of(context).primaryColorLight
+              ? Theme.of(context).primaryColor
               : const Color.fromARGB(255, 253, 253, 253),
         ),
         child: Text(
