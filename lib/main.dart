@@ -6,6 +6,7 @@ void main() {
   runApp(const MainApp());
 }
 
+// Main app from where the app starts.
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
 
@@ -13,6 +14,8 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Whatsapp',
+
+      /// Setting the theme of the app.
       theme: ThemeData(
         primaryColor: AppColor.primary,
       ),
