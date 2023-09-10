@@ -1,6 +1,5 @@
 import 'package:whatsapp/model/user_model.dart';
 import 'package:flutter/material.dart';
-import 'package:whatsapp/styles/app_color.dart';
 import 'package:whatsapp/views/home_page/home_view_model.dart';
 import 'package:whatsapp/views/chat_page/chat_page.dart';
 
@@ -118,7 +117,6 @@ class ChatState extends State<HomePage> {
         /// a new message.
         floatingActionButton: FloatingActionButton(
           onPressed: () {},
-          backgroundColor: AppColor.primary,
           child: const Icon(Icons.message_sharp),
         ),
       ),

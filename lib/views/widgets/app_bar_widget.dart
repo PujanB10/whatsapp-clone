@@ -6,15 +6,15 @@ class AppBarWidget extends StatelessWidget {
   /// Takes username, URL of the image of the user
   /// and background color of the app bar and creates an AppBar with
   /// video-call and audio-call icons integrated.
-  const AppBarWidget(
-      {super.key,
-      required this.username,
-      required this.imageUrl,
-      required this.bgColor});
+  const AppBarWidget({
+    super.key,
+    required this.username,
+    required this.imageUrl,
+  });
 
   final String username;
   final String imageUrl;
-  final Color bgColor;
+
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -27,7 +27,6 @@ class AppBarWidget extends StatelessWidget {
           Text(username)
         ],
       ),
-      backgroundColor: bgColor,
       actions: <Widget>[
         IconButton(onPressed: () {}, icon: const Icon(Icons.video_call_sharp)),
         IconButton(onPressed: () {}, icon: const Icon(Icons.call)),
