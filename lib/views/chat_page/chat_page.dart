@@ -83,8 +83,8 @@ class ChatPageBody extends State<ChatPage> {
                         textAlignVertical: TextAlignVertical.bottom,
                         decoration: InputDecoration(
                           hintText: "Message",
-                          hintStyle:
-                              const TextStyle(fontSize: AppFontSizes.medium),
+                          hintStyle: const TextStyle(
+                              fontSize: AppFontSizes.smallMedium),
                           fillColor: Colors.white,
                           filled: true,
                           enabledBorder: OutlineInputBorder(
