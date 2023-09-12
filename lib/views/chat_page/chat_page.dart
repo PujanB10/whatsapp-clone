@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp/model/chat_model.dart';
+import 'package:provider/provider.dart';
 import 'package:whatsapp/views/widgets/chat_box.dart';
 import 'package:whatsapp/views/chat_page/chat_view_model.dart';
 import 'package:whatsapp/styles/app_font_sizes.dart';
@@ -21,33 +21,9 @@ class ChatPage extends StatefulWidget {
 class ChatPageBody extends State<ChatPage> {
   final textController = TextEditingController();
   late String textMessage;
-  String message = "";
   int numberOfMessages = 0;
   bool isUser = false;
   var dynamicBottomBarIcon = const Icon(Icons.mic);
-
-  /// Adds the message to the model so as to extract later.
-  void sendMessage() {
-    setState(() {
-      ChatViewModel().addMessages(widget.usrName, textMessage, isUser = true);
-      textController.clear();
-    });
-  }
-
-  /// Transforms the icon from mic to send on typing something in
-  /// message field.
-  void setIcon() {
-    setState(() {
-      dynamicBottomBarIcon = const Icon(Icons.send);
-    });
-  }
-
-  /// Resets the icon back to mic after having sent the message.
-  void resetIcon() {
-    setState(() {
-      dynamicBottomBarIcon = const Icon(Icons.mic);
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +54,7 @@ class ChatPageBody extends State<ChatPage> {
                         controller: textController,
                         onChanged: (value) {
                           textMessage = value;
-                          setIcon();
+                          context.read<ChatViewModel>().setIcon();
                         },
                         textAlignVertical: TextAlignVertical.bottom,
                         decoration: InputDecoration(
@@ -111,8 +87,12 @@ class ChatPageBody extends State<ChatPage> {
               Padding(
                 padding: const EdgeInsets.fromLTRB(1, 0, 4, 5),
                 child: FloatingActionButton(
-                  onPressed: sendMessage,
-                  child: dynamicBottomBarIcon,
+                  onPressed: () {
+                    context.read<ChatViewModel>().addMessages(
+                        widget.usrName, textMessage, isUser = true);
+                    textController.clear();
+                  },
+                  child: context.watch<ChatViewModel>().defaultIcon,
                 ),
               )
             ],
@@ -121,14 +101,14 @@ class ChatPageBody extends State<ChatPage> {
       ),
     );
   }
+}
 
-  /// Builds the icons in the suffix of the message text field.
-  Widget buildIconsInMessageField(Icon iconName) {
-    return Padding(
-      padding: const EdgeInsets.all(8),
-      child: iconName,
-    );
-  }
+/// Builds the icons in the suffix of the message text field.
+Widget buildIconsInMessageField(Icon iconName) {
+  return Padding(
+    padding: const EdgeInsets.all(8),
+    child: iconName,
+  );
 }
 
 /// Builds the list of chat messages that comes in from the model.
@@ -144,16 +124,23 @@ class MessagesViewWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
         addAutomaticKeepAlives: false,
-        itemCount: dummyChat[widget.usrName].length,
+        itemCount:
+            context.watch<ChatViewModel>().dummyChat[widget.usrName].length,
         itemBuilder: ((BuildContext context, int index) => Column(
               //aligning left if received message and right if sent message
-              crossAxisAlignment: (dummyChat[widget.usrName][index]!["isUser"])
+              crossAxisAlignment: (context
+                      .watch<ChatViewModel>()
+                      .dummyChat[widget.usrName][index]!["isUser"])
                   ? CrossAxisAlignment.end
                   : CrossAxisAlignment.start,
               children: [
                 ChatBox(
-                    message: dummyChat[widget.usrName]![index]["message"],
-                    isUser: dummyChat[widget.usrName]![index]["isUser"])
+                    message: context
+                        .watch<ChatViewModel>()
+                        .dummyChat[widget.usrName]![index]["message"],
+                    isUser: context
+                        .watch<ChatViewModel>()
+                        .dummyChat[widget.usrName]![index]["isUser"])
               ],
             )));
   }
