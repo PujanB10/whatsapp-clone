@@ -1,7 +1,9 @@
+import 'package:provider/provider.dart';
 import 'package:whatsapp/model/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:whatsapp/views/home_page/home_view_model.dart';
 import 'package:whatsapp/views/chat_page/chat_page.dart';
+import 'package:whatsapp/views/chat_page/chat_view_model.dart';
 
 /// Home Page of the app.
 class HomePage extends StatefulWidget {
@@ -73,16 +75,18 @@ class ChatState extends State<HomePage> {
                           /// On tapping a user from the list, opens the private
                           /// chat with the user.
                           onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => ChatPage(
-                                        UserViewModel()
-                                            .userInfo(index)["userName"]!,
-                                        UserViewModel()
-                                            .userInfo(index)["imageURL"]!,
-                                        UserViewModel().userInfo(
-                                            index)["userMessages"]!)));
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                              return ChangeNotifierProvider(
+                                  create: (context) => ChatViewModel(),
+                                  child: ChatPage(
+                                      UserViewModel()
+                                          .userInfo(index)["userName"]!,
+                                      UserViewModel()
+                                          .userInfo(index)["imageURL"]!,
+                                      UserViewModel()
+                                          .userInfo(index)["userMessages"]!));
+                            }));
                           },
                           title: Row(
                             children: <Widget>[
