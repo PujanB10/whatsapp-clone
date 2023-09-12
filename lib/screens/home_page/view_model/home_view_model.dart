@@ -1,4 +1,4 @@
-import 'package:whatsapp/model/user_model.dart';
+import 'package:whatsapp/screens/home_page/model/user_model.dart';
 
 class UserViewModel {
   Map<String, String> userInfo(int index) {

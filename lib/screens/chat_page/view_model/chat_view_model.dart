@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp/model/chat_model.dart';
+import 'package:whatsapp/screens/chat_page/model/chat_model.dart';
 
 class ChatViewModel extends ChangeNotifier {
   //checks the existence of user in the model, adds if it does not exist

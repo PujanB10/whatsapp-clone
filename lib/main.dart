@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp/views/home_page/home_page.dart';
-import 'package:whatsapp/styles/app_color.dart';
+import 'package:whatsapp/screens/home_page/home_page.dart';
+import 'package:whatsapp/utils/styles/app_color.dart';
 
 void main() {
   runApp(const MainApp());

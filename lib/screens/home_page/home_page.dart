@@ -1,22 +1,15 @@
 import 'package:provider/provider.dart';
-import 'package:whatsapp/model/user_model.dart';
+import 'package:whatsapp/screens/home_page/model/user_model.dart';
 import 'package:flutter/material.dart';
-import 'package:whatsapp/views/home_page/home_view_model.dart';
-import 'package:whatsapp/views/chat_page/chat_page.dart';
-import 'package:whatsapp/views/chat_page/chat_view_model.dart';
+import 'package:whatsapp/screens/home_page/view_model/home_view_model.dart';
+import 'package:whatsapp/screens/chat_page/chat_page.dart';
+import 'package:whatsapp/screens/chat_page/view_model/chat_view_model.dart';
 
 /// Home Page of the app.
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   /// Home Page routed by MaterialApp that is displayed on opening the app.
   const HomePage({super.key});
 
-  @override
-  State<StatefulWidget> createState() {
-    return ChatState();
-  }
-}
-
-class ChatState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
