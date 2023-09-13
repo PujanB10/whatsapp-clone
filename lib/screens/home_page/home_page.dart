@@ -73,11 +73,11 @@ class HomePage extends StatelessWidget {
                               return ChangeNotifierProvider(
                                   create: (context) => ChatViewModel(),
                                   child: ChatPage(
-                                      UserViewModel()
+                                      usrName: UserViewModel()
                                           .userInfo(index)["userName"]!,
-                                      UserViewModel()
+                                      imgUrl: UserViewModel()
                                           .userInfo(index)["imageURL"]!,
-                                      UserViewModel()
+                                      message: UserViewModel()
                                           .userInfo(index)["userMessages"]!));
                             }));
                           },

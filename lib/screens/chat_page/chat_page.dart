@@ -7,7 +7,11 @@ import 'package:whatsapp/screens/chat_page/widgets/bottom_nav_bar_widget.dart';
 class ChatPage extends StatelessWidget {
   /// Private chat page that opens after having clicked
   /// a particular user from the home page.
-  const ChatPage(this.usrName, this.imgUrl, this.message, {super.key});
+  const ChatPage(
+      {required this.usrName,
+      required this.imgUrl,
+      required this.message,
+      super.key});
   final String usrName;
   final String imgUrl;
   final String message;
@@ -26,6 +30,8 @@ class ChatPage extends StatelessWidget {
 
       /// Calls the chat message builder.
       body: MessagesViewWidget(usrName: usrName),
+
+      /// Calls the Bottom Navigation Bar widget.
       bottomNavigationBar: BottomNavBar(
         usrName: usrName,
       ),
