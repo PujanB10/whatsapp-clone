@@ -8,7 +8,8 @@ import 'package:whatsapp/screens/chat_page/view_model/chat_view_model.dart';
 /// Private chat page of the app.
 class ChatPage extends StatelessWidget {
   /// Private chat page that opens after having clicked
-  /// a particular user from the home page.
+  /// a particular user from the home page. Takes [usrName],[imgUrl],[message]
+  /// as arguments.
   const ChatPage(
       {required this.usrName,
       required this.imgUrl,
