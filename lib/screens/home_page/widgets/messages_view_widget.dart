@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp/screens/home_page/view_model/home_view_model.dart';
-import 'package:provider/provider.dart';
-import 'package:whatsapp/screens/chat_page/view_model/chat_view_model.dart';
 import 'package:whatsapp/screens/chat_page/chat_page.dart';
 
 class MessagesViewWidget extends StatelessWidget {
@@ -30,15 +28,13 @@ class MessagesViewWidget extends StatelessWidget {
                     onTap: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
-                        return ChangeNotifierProvider(
-                            create: (context) => ChatViewModel(),
-                            child: ChatPage(
-                                usrName: HomeViewModel()
-                                    .userInfo(index)["userName"]!,
-                                imgUrl: HomeViewModel()
-                                    .userInfo(index)["imageURL"]!,
-                                message: HomeViewModel()
-                                    .userInfo(index)["userMessages"]!));
+                        return ChatPage(
+                            usrName:
+                                HomeViewModel().userInfo(index)["userName"]!,
+                            imgUrl:
+                                HomeViewModel().userInfo(index)["imageURL"]!,
+                            message: HomeViewModel()
+                                .userInfo(index)["userMessages"]!);
                       }));
                     },
                     title: Row(
