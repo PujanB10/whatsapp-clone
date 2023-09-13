@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
 
+/// A appbar for displaying information and other functionalities.
 class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
+  /// Creates a [AppBarWidget] widget.
+  ///
+  /// Takes no arguments.
+  ///
+  /// Creates a app bar with "WhatsApp" as its title.
+  /// Also creates a tab bar with options as Groups, Chats,
+  /// Status, Calls.
   const AppBarWidget({super.key});
 
   @override
@@ -26,6 +34,8 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
             onPressed: () {},
           )
         ],
+
+        /// Create tab bar with four tabs.
         bottom: const TabBar(tabs: <Widget>[
           Tab(
             icon: Icon(Icons.groups),
