@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:whatsapp/screens/chat_page/model/chat_model.dart';
 
 class ChatViewModel extends ChangeNotifier {
-  //checks the existence of user in the model, adds if it does not exist
-  //adds message if the user already exists
-
   static final Map<String, dynamic> _dummyChat = {
     "Pujan": [
       {"message": "Hey there! How's your day going?", "isUser": false},
