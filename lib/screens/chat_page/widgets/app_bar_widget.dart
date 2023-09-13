@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 /// Custom AppBar widget for chatpages.
 
-class AppBarWidget extends StatelessWidget {
+class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   /// Takes username, URL of the image of the user
   /// and background color of the app bar and creates an AppBar with
   /// video-call and audio-call icons integrated.
@@ -12,6 +12,8 @@ class AppBarWidget extends StatelessWidget {
     required this.imageUrl,
   });
 
+  @override
+  Size get preferredSize => const Size.fromHeight(55);
   final String username;
   final String imageUrl;
 
