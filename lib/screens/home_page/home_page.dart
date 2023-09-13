@@ -4,6 +4,10 @@ import 'package:flutter/material.dart';
 
 /// Home Page of the app.
 class HomePage extends StatelessWidget {
+  /// Creates a [HomePage] widget.
+  ///
+  /// Takes no arguments.
+  ///
   /// Home Page routed by MaterialApp that is displayed on opening the app.
   const HomePage({super.key});
 
