@@ -2,7 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:whatsapp/screens/home_page/view_model/home_view_model.dart';
 import 'package:whatsapp/screens/chat_page/chat_page.dart';
 
+/// A message view widget that views list of users with their last messages.
 class MessagesViewWidget extends StatelessWidget {
+  /// Creates a [MessagesViewWidget].
+  ///
+  /// Takes no arguments.
+  ///
+  /// Builds a [ListView] where each elements consists of the
+  /// image of the user,username of the user, last sent message of
+  /// the user and the time.
   const MessagesViewWidget({super.key});
 
   @override
@@ -22,10 +30,9 @@ class MessagesViewWidget extends StatelessWidget {
                       backgroundImage: AssetImage(
                           HomeViewModel().userInfo(index)["imageURL"]!),
                     ),
-
-                    /// On tapping a user from the list, opens the private
-                    /// chat with the user.
                     onTap: () {
+                      /// On tapping a user from the list, opens the private
+                      /// chat with the user.
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
                         return ChatPage(
