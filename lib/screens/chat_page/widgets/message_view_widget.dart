@@ -3,7 +3,11 @@ import 'package:whatsapp/screens/chat_page/widgets/chat_box.dart';
 import 'package:whatsapp/screens/chat_page/view_model/chat_view_model.dart';
 import 'package:provider/provider.dart';
 
+/// A messages viewing widget for building a list of chat messages.
 class MessagesViewWidget extends StatelessWidget {
+  /// Creates a [MessagesViewWidget]
+  /// [usrName] is the username with whom the user's messages is to
+  /// be displayed.
   const MessagesViewWidget({
     super.key,
     required this.usrName,
@@ -14,21 +18,24 @@ class MessagesViewWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
         addAutomaticKeepAlives: false,
+
+        /// The numbers of messages present at an instance with the given user.
         itemCount: context.watch<ChatViewModel>().dummyChat[usrName].length,
         itemBuilder: ((BuildContext context, int index) => Column(
-              //aligning left if received message and right if sent message
+              /// Align at start if the message is received, align at
+              /// the end if the message is sent.
               crossAxisAlignment: (context
-                      .watch<ChatViewModel>()
+                      .read<ChatViewModel>()
                       .dummyChat[usrName][index]!["isUser"])
                   ? CrossAxisAlignment.end
                   : CrossAxisAlignment.start,
               children: [
                 ChatBox(
                     message: context
-                        .watch<ChatViewModel>()
+                        .read<ChatViewModel>()
                         .dummyChat[usrName]![index]["message"],
                     isUser: context
-                        .watch<ChatViewModel>()
+                        .read<ChatViewModel>()
                         .dummyChat[usrName]![index]["isUser"])
               ],
             )));
