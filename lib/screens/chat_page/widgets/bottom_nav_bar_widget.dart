@@ -3,7 +3,11 @@ import 'package:provider/provider.dart';
 import 'package:whatsapp/screens/chat_page/view_model/chat_view_model.dart';
 import 'package:whatsapp/utils/styles/app_font_sizes.dart';
 
+/// A customizable bottom navigation bar for sending messages
 class BottomNavBar extends StatelessWidget {
+  /// Creates a bottom navigation bar.
+  ///
+  /// [usrName] is the username associated with this navigation bar.
   BottomNavBar({super.key, required this.usrName});
   final textController = TextEditingController();
   final String usrName;
@@ -23,6 +27,8 @@ class BottomNavBar extends StatelessWidget {
                   child: TextField(
                       controller: textController,
                       onChanged: (value) {
+                        /// Updates the text message inserted in the message field
+                        /// and triggers an icon change.
                         textMessage = value;
                         context.read<ChatViewModel>().setIcon();
                       },
@@ -37,8 +43,7 @@ class BottomNavBar extends StatelessWidget {
                             borderSide: const BorderSide(color: Colors.white),
                             borderRadius: BorderRadius.circular(20)),
 
-                        /// Adds a prefix icon in front of the message text
-                        /// field.
+                        /// Adds a prefix icon in front of the message text field.
                         prefixIcon: const Icon(Icons.emoji_emotions),
                         suffixIcon: Row(
                             mainAxisAlignment: MainAxisAlignment.end,
@@ -58,6 +63,8 @@ class BottomNavBar extends StatelessWidget {
               padding: const EdgeInsets.fromLTRB(1, 0, 4, 5),
               child: FloatingActionButton(
                 onPressed: () {
+                  /// Send the message and clears the message text field
+                  /// on pressing the button.
                   context
                       .read<ChatViewModel>()
                       .addMessages(usrName, textMessage, true);
@@ -73,6 +80,7 @@ class BottomNavBar extends StatelessWidget {
   }
 
   /// Builds the icons in the suffix of the message text field.
+  /// [iconName] is the icon to be displayed.
   Widget buildIconsInMessageField(Icon iconName) {
     return Padding(
       padding: const EdgeInsets.all(8),
