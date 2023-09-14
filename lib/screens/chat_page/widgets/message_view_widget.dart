@@ -6,12 +6,15 @@ import 'package:provider/provider.dart';
 /// A messages viewing widget for building a list of chat messages.
 class MessagesViewWidget extends StatelessWidget {
   /// Creates a [MessagesViewWidget]
-  /// [usrName] is the username with whom the user's messages is to
-  /// be displayed.
+  ///
+  /// [usrName] must not be null.
   const MessagesViewWidget({
     super.key,
     required this.usrName,
   });
+
+  /// [usrName] is the username with whom the user's messages is to
+  /// be displayed.
   final String usrName;
 
   @override

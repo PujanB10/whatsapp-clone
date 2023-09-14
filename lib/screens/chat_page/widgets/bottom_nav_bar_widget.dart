@@ -5,7 +5,9 @@ import 'package:whatsapp/utils/styles/app_font_sizes.dart';
 
 /// A customizable bottom navigation bar for sending messages
 class BottomNavBar extends StatelessWidget {
-  /// Creates a bottom navigation bar.
+  /// Creates a [BottomNavBar] widget
+  ///
+  /// [usrName] must not be null.
   ///
   /// [usrName] is the username associated with this navigation bar.
   BottomNavBar({super.key, required this.usrName});

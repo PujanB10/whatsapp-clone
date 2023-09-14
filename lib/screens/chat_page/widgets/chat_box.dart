@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 class ChatBox extends StatelessWidget {
   /// Creates a [ChatBox] widget.
   ///
+  /// [message] and [isUser] must not be null.
+  ///
   /// [message] is the chat message that is to be displayed in the chatbox.
   /// [isUser] is to check whether the message is being sent or being received
   /// by the user.
