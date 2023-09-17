@@ -1,4 +1,4 @@
-import 'package:whatsapp/screens/home_page/widgets/messages_view_widget.dart';
+import 'package:whatsapp/screens/home_page/widgets/users_list_view_widget.dart';
 import 'package:whatsapp/screens/home_page/widgets/app_bar_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -20,7 +20,7 @@ class HomePage extends StatelessWidget {
 
         /// Builds the list of users with their pictures as leading
         /// image, their last text and time.
-        body: const MessagesViewWidget(),
+        body: const UsersListViewWidget(),
 
         /// Floating button that resides on the bottom right to create
         /// a new message.
