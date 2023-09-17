@@ -28,7 +28,6 @@ class ChatPage extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => ChatViewModel(),
       child: Scaffold(
-        resizeToAvoidBottomInset: true,
         backgroundColor: Colors.blueGrey.shade100,
 
         /// Calls the custom AppBar

@@ -64,7 +64,6 @@ class UsersListViewWidget extends StatelessWidget {
                       children: <Widget>[
                         Text(
                           HomeViewModel().userInfo(index)["userMessages"]!,
-                          style: const TextStyle(color: Colors.grey),
                         ),
                         Text(HomeViewModel().userInfo(index)["time"]!)
                       ],

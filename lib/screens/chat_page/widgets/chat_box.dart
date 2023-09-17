@@ -39,7 +39,7 @@ class ChatBox extends StatelessWidget {
               ),
               child: Text(
                 message,
-                style: const TextStyle(fontSize: 17),
+                style: Theme.of(context).textTheme.bodyLarge,
               ),
             ),
           )

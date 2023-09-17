@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:whatsapp/screens/chat_page/view_model/chat_view_model.dart';
-import 'package:whatsapp/utils/styles/app_font_sizes.dart';
 
 /// A customizable bottom navigation bar for sending messages
 class BottomNavBar extends StatelessWidget {
@@ -19,7 +18,7 @@ class BottomNavBar extends StatelessWidget {
     return Padding(
       padding: MediaQuery.of(context).viewInsets,
       child: SizedBox(
-        height: 50,
+        height: kBottomNavigationBarHeight,
         child: Row(
           children: [
             Expanded(
@@ -35,8 +34,6 @@ class BottomNavBar extends StatelessWidget {
                   textAlignVertical: TextAlignVertical.bottom,
                   decoration: InputDecoration(
                     hintText: "Message",
-                    hintStyle:
-                        const TextStyle(fontSize: AppFontSizes.smallMedium),
                     fillColor: Colors.white,
                     filled: true,
                     enabledBorder: OutlineInputBorder(
