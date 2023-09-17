@@ -19,28 +19,30 @@ class ChatBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      /// Aligns the chabox to the right if the message is sent
-      /// and alignts the chatbox to the left if the message is received.
-      padding: isUser
-          ? const EdgeInsets.fromLTRB(100, 8, 10, 8)
-          : const EdgeInsets.fromLTRB(10, 8, 100, 8),
-      child: Container(
-        padding: const EdgeInsets.all(10),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
+    return message.isNotEmpty
+        ? Padding(
+            /// Aligns the chabox to the right if the message is sent
+            /// and alignts the chatbox to the left if the message is received.
+            padding: isUser
+                ? const EdgeInsets.fromLTRB(100, 8, 10, 8)
+                : const EdgeInsets.fromLTRB(10, 8, 100, 8),
+            child: Container(
+              padding: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
 
-          /// Sets the color of chatbox to green if the message is received.
-          /// Sets the color of chatbox to white if the message is sent.
-          color: isUser
-              ? const Color.fromARGB(255, 137, 211, 141)
-              : const Color.fromARGB(255, 253, 253, 253),
-        ),
-        child: Text(
-          message,
-          style: const TextStyle(fontSize: 17),
-        ),
-      ),
-    );
+                /// Sets the color of chatbox to green if the message is received.
+                /// Sets the color of chatbox to white if the message is sent.
+                color: isUser
+                    ? const Color.fromARGB(255, 137, 211, 141)
+                    : const Color.fromARGB(255, 253, 253, 253),
+              ),
+              child: Text(
+                message,
+                style: const TextStyle(fontSize: 17),
+              ),
+            ),
+          )
+        : Container();
   }
 }
