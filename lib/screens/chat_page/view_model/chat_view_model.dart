@@ -49,14 +49,13 @@ class ChatViewModel extends ChangeNotifier {
       // Map<String, dynamic> chatMap = chat.toMapExisting();
       dummyChat[userNameFromView]!
           .add({"message": messageFromView, "isUser": isUserFromView});
-      notifyListeners();
     } else {
       {
         Map<String, dynamic> chatMap = chat.toMapNew();
         dummyChat.addEntries(chatMap.entries);
-        notifyListeners();
       }
     }
+    notifyListeners();
   }
 
   /// Sets mic icon as default and changes the icon to send on calling the function.
