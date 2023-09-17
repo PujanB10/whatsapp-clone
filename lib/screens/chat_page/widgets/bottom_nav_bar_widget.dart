@@ -13,7 +13,6 @@ class BottomNavBar extends StatelessWidget {
   BottomNavBar({super.key, required this.userName});
   final textController = TextEditingController();
   final String userName;
-  String textMessage = "";
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +30,6 @@ class BottomNavBar extends StatelessWidget {
                       onChanged: (value) {
                         /// Updates the text message inserted in the message field
                         /// and triggers an icon change.
-                        textMessage = value;
                         context.read<ChatViewModel>().setIcon();
                       },
                       textAlignVertical: TextAlignVertical.bottom,
@@ -69,7 +67,7 @@ class BottomNavBar extends StatelessWidget {
                   /// on pressing the button.
                   context
                       .read<ChatViewModel>()
-                      .addMessages(userName, textMessage, true);
+                      .addMessages(userName, textController.text, true);
                   textController.clear();
                 },
                 child: context.watch<ChatViewModel>().defaultIcon,
@@ -88,5 +86,9 @@ class BottomNavBar extends StatelessWidget {
       padding: const EdgeInsets.all(8),
       child: iconName,
     );
+  }
+
+  void dispose() {
+    textController.dispose();
   }
 }
