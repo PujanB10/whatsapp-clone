@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp/screens/home_page/home_page.dart';
-import 'package:whatsapp/utils/styles/app_color.dart';
+import 'package:whatsapp/theme/theme.dart';
 
 void main() {
   runApp(const MainApp());
@@ -16,11 +16,7 @@ class MainApp extends StatelessWidget {
       title: 'Whatsapp',
 
       /// Setting the theme of the app.
-      theme: ThemeData(
-          primaryColor: AppColor.primary,
-          appBarTheme: const AppBarTheme(color: AppColor.primary),
-          floatingActionButtonTheme: const FloatingActionButtonThemeData(
-              backgroundColor: AppColor.primary)),
+      theme: whatsappTheme,
       home: const HomePage(),
     );
   }
