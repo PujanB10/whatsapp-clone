@@ -18,26 +18,27 @@ class HomePageAppBarWidget extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return AppBar(
-        title: const Text('WhatsApp'),
-        backgroundColor: Theme.of(context).primaryColor,
-        leadingWidth: 60,
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(Icons.camera_alt_outlined),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: const Icon(Icons.search),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: const Icon(Icons.more_vert),
-            onPressed: () {},
-          )
-        ],
+      title: const Text('WhatsApp'),
+      backgroundColor: Theme.of(context).primaryColor,
+      leadingWidth: 60,
+      actions: <Widget>[
+        IconButton(
+          icon: const Icon(Icons.camera_alt_outlined),
+          onPressed: () {},
+        ),
+        IconButton(
+          icon: const Icon(Icons.search),
+          onPressed: () {},
+        ),
+        IconButton(
+          icon: const Icon(Icons.more_vert),
+          onPressed: () {},
+        )
+      ],
 
-        /// Create tab bar with four tabs.
-        bottom: const TabBar(tabs: <Widget>[
+      /// Create tab bar with four tabs.
+      bottom: const TabBar(
+        tabs: <Widget>[
           Tab(
             icon: Icon(Icons.groups),
           ),
@@ -48,6 +49,8 @@ class HomePageAppBarWidget extends StatelessWidget
           Tab(
             text: 'Calls',
           ),
-        ]));
+        ],
+      ),
+    );
   }
 }

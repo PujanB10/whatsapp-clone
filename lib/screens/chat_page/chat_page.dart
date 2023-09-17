@@ -26,24 +26,25 @@ class ChatPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-        create: (context) => ChatViewModel(),
-        child: Scaffold(
-          resizeToAvoidBottomInset: true,
-          backgroundColor: Colors.blueGrey.shade100,
+      create: (context) => ChatViewModel(),
+      child: Scaffold(
+        resizeToAvoidBottomInset: true,
+        backgroundColor: Colors.blueGrey.shade100,
 
-          /// Calls the custom AppBar
-          appBar: ChatPageAppBarWidget(
-            username: userName,
-            imageUrl: imageUrl,
-          ),
+        /// Calls the custom AppBar
+        appBar: ChatPageAppBarWidget(
+          username: userName,
+          imageUrl: imageUrl,
+        ),
 
-          /// Calls the chat message builder.
-          body: MesssageListViewWidget(userName: userName),
+        /// Calls the chat message builder.
+        body: MesssageListViewWidget(userName: userName),
 
-          /// Calls the Bottom Navigation Bar widget.
-          bottomNavigationBar: BottomNavBar(
-            userName: userName,
-          ),
-        ));
+        /// Calls the Bottom Navigation Bar widget.
+        bottomNavigationBar: BottomNavBar(
+          userName: userName,
+        ),
+      ),
+    );
   }
 }

@@ -24,37 +24,38 @@ class BottomNavBar extends StatelessWidget {
           children: [
             Expanded(
               child: Padding(
-                  padding: const EdgeInsets.fromLTRB(7, 0, 4, 8),
-                  child: TextField(
-                      controller: textController,
-                      onChanged: (value) {
-                        /// Updates the text message inserted in the message field
-                        /// and triggers an icon change.
-                        context.read<ChatViewModel>().setIcon();
-                      },
-                      textAlignVertical: TextAlignVertical.bottom,
-                      decoration: InputDecoration(
-                        hintText: "Message",
-                        hintStyle:
-                            const TextStyle(fontSize: AppFontSizes.smallMedium),
-                        fillColor: Colors.white,
-                        filled: true,
-                        enabledBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(color: Colors.white),
-                            borderRadius: BorderRadius.circular(20)),
+                padding: const EdgeInsets.fromLTRB(7, 0, 4, 8),
+                child: TextField(
+                  controller: textController,
+                  onChanged: (value) {
+                    /// Updates the text message inserted in the message field
+                    /// and triggers an icon change.
+                    context.read<ChatViewModel>().setIcon();
+                  },
+                  textAlignVertical: TextAlignVertical.bottom,
+                  decoration: InputDecoration(
+                    hintText: "Message",
+                    hintStyle:
+                        const TextStyle(fontSize: AppFontSizes.smallMedium),
+                    fillColor: Colors.white,
+                    filled: true,
+                    enabledBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(color: Colors.white),
+                        borderRadius: BorderRadius.circular(20)),
 
-                        /// Adds a prefix icon in front of the message text field.
-                        prefixIcon: const Icon(Icons.emoji_emotions),
-                        suffixIcon: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              buildIconsInMessageField(
-                                  const Icon(Icons.attachment)),
-                              buildIconsInMessageField(
-                                  const Icon(Icons.camera_alt))
-                            ]),
-                      ))),
+                    /// Adds a prefix icon in front of the message text field.
+                    prefixIcon: const Icon(Icons.emoji_emotions),
+                    suffixIcon: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        buildIconsInMessageField(const Icon(Icons.attachment)),
+                        buildIconsInMessageField(const Icon(Icons.camera_alt))
+                      ],
+                    ),
+                  ),
+                ),
+              ),
             ),
 
             /// Send or Record button that resides in the bottom navigation
@@ -72,7 +73,7 @@ class BottomNavBar extends StatelessWidget {
                 },
                 child: context.watch<ChatViewModel>().defaultIcon,
               ),
-            )
+            ),
           ],
         ),
       ),

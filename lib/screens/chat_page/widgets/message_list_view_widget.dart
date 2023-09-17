@@ -20,27 +20,28 @@ class MesssageListViewWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-        addAutomaticKeepAlives: false,
+      addAutomaticKeepAlives: false,
 
-        /// The numbers of messages present at an instance with the given user.
-        itemCount: context.watch<ChatViewModel>().dummyChat[userName].length,
-        itemBuilder: ((BuildContext context, int index) => Column(
-              /// Align at start if the message is received, align at
-              /// the end if the message is sent.
-              crossAxisAlignment: (context
+      /// The numbers of messages present at an instance with the given user.
+      itemCount: context.watch<ChatViewModel>().dummyChat[userName].length,
+      itemBuilder: ((BuildContext context, int index) => Column(
+            /// Align at start if the message is received, align at
+            /// the end if the message is sent.
+            crossAxisAlignment: (context
+                    .read<ChatViewModel>()
+                    .dummyChat[userName][index]!["isUser"])
+                ? CrossAxisAlignment.end
+                : CrossAxisAlignment.start,
+            children: [
+              ChatBox(
+                  message: context
                       .read<ChatViewModel>()
-                      .dummyChat[userName][index]!["isUser"])
-                  ? CrossAxisAlignment.end
-                  : CrossAxisAlignment.start,
-              children: [
-                ChatBox(
-                    message: context
-                        .read<ChatViewModel>()
-                        .dummyChat[userName]![index]["message"],
-                    isUser: context
-                        .read<ChatViewModel>()
-                        .dummyChat[userName]![index]["isUser"])
-              ],
-            )));
+                      .dummyChat[userName]![index]["message"],
+                  isUser: context
+                      .read<ChatViewModel>()
+                      .dummyChat[userName]![index]["isUser"])
+            ],
+          )),
+    );
   }
 }
