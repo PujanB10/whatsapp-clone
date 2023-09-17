@@ -7,12 +7,12 @@ import 'package:whatsapp/utils/styles/app_font_sizes.dart';
 class BottomNavBar extends StatelessWidget {
   /// Creates a [BottomNavBar] widget
   ///
-  /// [usrName] must not be null.
+  /// [userName] must not be null.
   ///
-  /// [usrName] is the username associated with this navigation bar.
-  BottomNavBar({super.key, required this.usrName});
+  /// [userName] is the username associated with this navigation bar.
+  BottomNavBar({super.key, required this.userName});
   final textController = TextEditingController();
-  final String usrName;
+  final String userName;
   String textMessage = "";
 
   @override
@@ -69,7 +69,7 @@ class BottomNavBar extends StatelessWidget {
                   /// on pressing the button.
                   context
                       .read<ChatViewModel>()
-                      .addMessages(usrName, textMessage, true);
+                      .addMessages(userName, textMessage, true);
                   textController.clear();
                 },
                 child: context.watch<ChatViewModel>().defaultIcon,

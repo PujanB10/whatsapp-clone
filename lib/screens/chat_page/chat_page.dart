@@ -9,18 +9,18 @@ import 'package:whatsapp/screens/chat_page/view_model/chat_view_model.dart';
 class ChatPage extends StatelessWidget {
   /// Creates a [ChatPage] widget.
   ///
-  /// [usrName], [imgUrl] and [message] must not be null.
+  /// [userName], [imageUrl] and [message] must not be null.
   ///
-  /// [usrName] is the username, [imgUrl] is the Url of image and [message] is the
+  /// [userName] is the username, [imageUrl] is the Url of image and [message] is the
   /// last message of the user of whom the private chat page is to
   /// be opened.
   const ChatPage(
-      {required this.usrName,
-      required this.imgUrl,
+      {required this.userName,
+      required this.imageUrl,
       required this.message,
       super.key});
-  final String usrName;
-  final String imgUrl;
+  final String userName;
+  final String imageUrl;
   final String message;
 
   @override
@@ -33,16 +33,16 @@ class ChatPage extends StatelessWidget {
 
           /// Calls the custom AppBar
           appBar: ChatPageAppBarWidget(
-            username: usrName,
-            imageUrl: imgUrl,
+            username: userName,
+            imageUrl: imageUrl,
           ),
 
           /// Calls the chat message builder.
-          body: MesssageListViewWidget(usrName: usrName),
+          body: MesssageListViewWidget(userName: userName),
 
           /// Calls the Bottom Navigation Bar widget.
           bottomNavigationBar: BottomNavBar(
-            usrName: usrName,
+            userName: userName,
           ),
         ));
   }

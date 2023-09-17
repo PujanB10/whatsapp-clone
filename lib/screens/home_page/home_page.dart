@@ -1,5 +1,5 @@
 import 'package:whatsapp/screens/home_page/widgets/users_list_view_widget.dart';
-import 'package:whatsapp/screens/home_page/widgets/app_bar_widget.dart';
+import 'package:whatsapp/screens/home_page/widgets/homepage_app_bar_widget.dart';
 import 'package:flutter/material.dart';
 
 /// Home Page of the app.
@@ -16,7 +16,7 @@ class HomePage extends StatelessWidget {
     return DefaultTabController(
       length: 4,
       child: Scaffold(
-        appBar: const AppBarWidget(),
+        appBar: const HomePageAppBarWidget(),
 
         /// Builds the list of users with their pictures as leading
         /// image, their last text and time.

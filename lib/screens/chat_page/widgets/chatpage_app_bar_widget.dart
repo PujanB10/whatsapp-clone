@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 
 /// A customizable appbar for displaying information and other functionalities.
-class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
-  /// Creates a [AppBarWidget] widget.
+class ChatPageAppBarWidget extends StatelessWidget
+    implements PreferredSizeWidget {
+  /// Creates a [ChatPageAppBarWidget] widget.
   ///
   /// [username] and [imageUrl] must not be null.
   ///
   /// This appbar also consists of call, video-call and other options icons
   /// integrated in it.
-  const AppBarWidget({
+  const ChatPageAppBarWidget({
     super.key,
     required this.username,
     required this.imageUrl,

@@ -36,9 +36,9 @@ class UsersListViewWidget extends StatelessWidget {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
                         return ChatPage(
-                            usrName:
+                            userName:
                                 HomeViewModel().userInfo(index)["userName"]!,
-                            imgUrl:
+                            imageUrl:
                                 HomeViewModel().userInfo(index)["imageURL"]!,
                             message: HomeViewModel()
                                 .userInfo(index)["userMessages"]!);
