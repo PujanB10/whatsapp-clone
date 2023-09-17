@@ -15,7 +15,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   });
 
   @override
-  Size get preferredSize => const Size.fromHeight(55);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
   /// [username] is the username  of the
   /// user whose information is to be displayed in the appbar.
