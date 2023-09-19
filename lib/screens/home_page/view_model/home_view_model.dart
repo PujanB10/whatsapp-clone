@@ -51,10 +51,10 @@ class HomeViewModel {
 
   Map<String, String> userInfo(int index) {
     return {
-      "userName": dummy[index].userName!,
-      "userMessages": dummy[index].messages!,
-      "imageURL": dummy[index].imageURL!,
-      "time": dummy[index].time!
+      "userName": dummy[index].userName,
+      "userMessages": dummy[index].messages,
+      "imageURL": dummy[index].imageURL,
+      "time": dummy[index].time
     };
   }
 }
