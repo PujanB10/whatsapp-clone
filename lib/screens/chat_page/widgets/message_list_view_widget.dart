@@ -23,9 +23,9 @@ class MesssageListViewWidget extends StatelessWidget {
       /// The numbers of messages present at an instance with the given user.
       itemCount: context.watch<ChatViewModel>().dummyChat[userName].length,
       itemBuilder: ((BuildContext context, int index) => ChatBox(
-          message: context.read<ChatViewModel>().dummyChat[userName]![index]
+          message: context.read<ChatViewModel>().dummyChat[userName][index]
               ["message"],
-          isUser: context.read<ChatViewModel>().dummyChat[userName]![index]
+          isUser: context.read<ChatViewModel>().dummyChat[userName][index]
               ["isUser"])),
     );
   }

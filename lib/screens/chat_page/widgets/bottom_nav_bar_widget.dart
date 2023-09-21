@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import 'package:whatsapp/screens/chat_page/view_model/chat_view_model.dart';
 import 'package:whatsapp/screens/chat_page/widgets/bottom_nav_bar_floating_button.dart';
 import 'package:whatsapp/ui_helpers/ui_helpers.dart';
-import 'package:whatsapp/ui_kit/floating_action_button_kit.dart';
 
 /// A customizable bottom navigation bar for sending messages
 class BottomNavBar extends StatelessWidget {
