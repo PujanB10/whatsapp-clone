@@ -34,28 +34,16 @@ class UsersListViewWidget extends StatelessWidget {
                     onTap: () {
                       /// On tapping a user from the list, opens the private
                       /// chat with the user.
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return ChatPage(
-                                userName: HomeViewModel()
-                                    .userInfo(index)["userName"]!,
-                                imageUrl: HomeViewModel()
-                                    .userInfo(index)["imageURL"]!,
-                                message: HomeViewModel()
-                                    .userInfo(index)["userMessages"]!);
-                          },
-                        ),
-                      );
+                      ChatPage.presentPage(context, index);
                     },
                     title: Row(
                       children: <Widget>[
                         const Padding(
-                            padding: EdgeInsets.fromLTRB(0, 2, 2, 30)),
+                            padding: EdgeInsets.fromLTRB(
+                                0, 2, 2, 30)), //create UIhelper and implement
                         Text(
                           HomeViewModel().userInfo(index)["userName"]!,
-                          style: const TextStyle(fontWeight: FontWeight.bold),
+                          style: Theme.of(context).textTheme.titleMedium,
                         )
                       ],
                     ),
