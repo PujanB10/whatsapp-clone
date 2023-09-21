@@ -38,9 +38,7 @@ class UsersListViewWidget extends StatelessWidget {
                     },
                     title: Row(
                       children: <Widget>[
-                        const Padding(
-                            padding: EdgeInsets.fromLTRB(
-                                0, 2, 2, 30)), //create UIhelper and implement
+                        //create UIhelper and implement
                         Text(
                           HomeViewModel().userInfo(index)["userName"]!,
                           style: Theme.of(context).textTheme.titleMedium,
