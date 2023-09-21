@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp/ui_helpers/ui_helpers.dart';
 
 /// A customizable appbar for displaying information and other functionalities.
 class ChatPageAppBarWidget extends StatelessWidget
@@ -33,7 +34,7 @@ class ChatPageAppBarWidget extends StatelessWidget
         children: <Widget>[
           CircleAvatar(backgroundImage: AssetImage(imageUrl)),
           const Padding(
-            padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+            padding: UiHelpers.evenSpaceAroundMedium,
           ),
           Text(username)
         ],

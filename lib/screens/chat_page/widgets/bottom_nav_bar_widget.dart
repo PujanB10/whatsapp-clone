@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:whatsapp/screens/chat_page/view_model/chat_view_model.dart';
+import 'package:whatsapp/ui_helpers/ui_helpers.dart';
 
 /// A customizable bottom navigation bar for sending messages
 class BottomNavBar extends StatelessWidget {
@@ -23,7 +24,7 @@ class BottomNavBar extends StatelessWidget {
           children: [
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(7, 0, 4, 8),
+                padding: UiHelpers.paddingVertical(3),
                 child: TextField(
                   controller: textController,
                   onChanged: (value) {
@@ -36,8 +37,8 @@ class BottomNavBar extends StatelessWidget {
                     hintText: "Message",
                     fillColor: Colors.white,
                     filled: true,
-                    enabledBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(color: Colors.white),
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
                         borderRadius: BorderRadius.circular(20)),
 
                     /// Adds a prefix icon in front of the message text field.
@@ -58,7 +59,7 @@ class BottomNavBar extends StatelessWidget {
             /// Send or Record button that resides in the bottom navigation
             /// bar alongside message text field.
             Padding(
-              padding: const EdgeInsets.fromLTRB(1, 0, 4, 5),
+              padding: UiHelpers.paddingVertical(3),
               child: FloatingActionButton(
                 onPressed: () {
                   /// Send the message and clears the message text field
@@ -81,7 +82,7 @@ class BottomNavBar extends StatelessWidget {
   /// [iconName] is the icon to be displayed.
   Widget buildIconsInMessageField(Icon iconName) {
     return Padding(
-      padding: const EdgeInsets.all(8),
+      padding: UiHelpers.evenSpaceAroundMedium,
       child: iconName,
     );
   }
