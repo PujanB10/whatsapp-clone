@@ -1,12 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp/screens/chat_page/widgets/message_list_view_widget.dart';
-import 'package:whatsapp/screens/chat_page/widgets/chatpage_app_bar_widget.dart';
+import 'package:whatsapp/screens/chat_page/widgets/chat_page_app_bar_widget.dart';
 import 'package:whatsapp/screens/chat_page/widgets/bottom_nav_bar_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:whatsapp/screens/chat_page/view_model/chat_view_model.dart';
+import 'package:whatsapp/screens/home_page/view_model/home_view_model.dart';
 
 /// A private chat page for viewing and sending messages.
 class ChatPage extends StatelessWidget {
+  static void presentPage(BuildContext context, int index) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) {
+          return ChatPage(
+              userName: HomeViewModel().userInfo(index)["userName"]!,
+              imageUrl: HomeViewModel().userInfo(index)["imageURL"]!,
+              message: HomeViewModel().userInfo(index)["userMessages"]!);
+        },
+      ),
+    );
+  }
+
   /// Creates a [ChatPage] widget.
   ///
   /// [userName], [imageUrl] and [message] must not be null.
