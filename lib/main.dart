@@ -16,7 +16,7 @@ class MainApp extends StatelessWidget {
       title: 'Whatsapp',
 
       /// Setting the theme of the app.
-      theme: whatsappTheme,
+      theme: WhatsappTheme.whatsappTheme,
       home: const HomePage(),
     );
   }
