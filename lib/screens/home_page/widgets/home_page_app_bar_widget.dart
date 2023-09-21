@@ -20,7 +20,6 @@ class HomePageAppBarWidget extends StatelessWidget
   Widget build(BuildContext context) {
     return AppBar(
       title: const Text('WhatsApp'),
-      backgroundColor: Theme.of(context).primaryColor,
       actions: <Widget>[
         buildIconButton(const Icon(Icons.camera_alt_outlined)),
         buildIconButton(const Icon(Icons.search)),

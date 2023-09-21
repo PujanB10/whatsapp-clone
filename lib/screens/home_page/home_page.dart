@@ -1,5 +1,5 @@
 import 'package:whatsapp/screens/home_page/widgets/users_list_view_widget.dart';
-import 'package:whatsapp/screens/home_page/widgets/homepage_app_bar_widget.dart';
+import 'package:whatsapp/screens/home_page/widgets/home_page_app_bar_widget.dart';
 import 'package:flutter/material.dart';
 
 /// Home Page of the app.
