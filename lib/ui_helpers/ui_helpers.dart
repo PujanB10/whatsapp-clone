@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class UiHelpers {
   static EdgeInsets paddingVertical(double hspacing) =>
-      EdgeInsets.symmetric(horizontal: hspacing, vertical: 8);
+      EdgeInsets.symmetric(horizontal: hspacing, vertical: 6);
 
   static const EdgeInsets evenSpaceAroundMedium = EdgeInsets.all(8);
 
