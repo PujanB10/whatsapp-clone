@@ -9,7 +9,6 @@ class FloatingActionButtonKit extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
-      backgroundColor: Theme.of(context).primaryColor,
       onPressed: onClick,
       child: floatingIcon,
     );

@@ -1,6 +1,7 @@
 import 'package:whatsapp/screens/home_page/widgets/users_list_view_widget.dart';
 import 'package:whatsapp/screens/home_page/widgets/home_page_app_bar_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:whatsapp/ui_kit/floating_action_button_kit.dart';
 
 /// Home Page of the app.
 class HomePage extends StatelessWidget {
@@ -24,9 +25,9 @@ class HomePage extends StatelessWidget {
 
         /// Floating button that resides on the bottom right to create
         /// a new message.
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {},
-          child: const Icon(Icons.message_sharp),
+        floatingActionButton: FloatingActionButtonKit(
+          onClick: () {},
+          floatingIcon: const Icon(Icons.message_sharp),
         ),
       ),
     );

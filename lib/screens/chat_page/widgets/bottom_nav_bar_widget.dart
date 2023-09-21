@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:whatsapp/screens/chat_page/view_model/chat_view_model.dart';
 import 'package:whatsapp/ui_helpers/ui_helpers.dart';
+import 'package:whatsapp/ui_kit/floating_action_button_kit.dart';
 
 /// A customizable bottom navigation bar for sending messages
 class BottomNavBar extends StatelessWidget {
@@ -60,8 +61,8 @@ class BottomNavBar extends StatelessWidget {
             /// bar alongside message text field.
             Padding(
               padding: UiHelpers.paddingVertical(3),
-              child: FloatingActionButton(
-                onPressed: () {
+              child: FloatingActionButtonKit(
+                onClick: () {
                   /// Send the message and clears the message text field
                   /// on pressing the button.
                   context
@@ -69,7 +70,7 @@ class BottomNavBar extends StatelessWidget {
                       .addMessages(userName, textController.text, true);
                   textController.clear();
                 },
-                child: context.watch<ChatViewModel>().defaultIcon,
+                floatingIcon: context.watch<ChatViewModel>().defaultIcon,
               ),
             ),
           ],
